@@ -1,0 +1,35 @@
+Chicken Financial LLC
+International Egg Traders Association Certified! 
+Giving todays top egg traders the perfect perch to roost on.
+
+API Interface:
+POST /api/v2/auth/login                 //Login
+POST /api/v2/auth/refresh               //Refresh Access token with Cookie
+POST /api/v2/auth/logout                //Destroy Cookie
+GET  /api/v2/auth/history/{userID}      //Get Auth History
+
+GET /api/v2/user/                       //Get User Profile & Account List Based on JWT
+GET /api/v1/user/{UserID} (depricated)  //Get User Profile & Account List Based on Parameter 
+POST /api/v2/user/                      //Update Profile
+
+GET /api/v2/account/{ID}/               //Get Account Information & Transfer History        
+
+GET /api/v2/transfer/{ID}/              //Get Trasfer Information
+POST /api/v2/transfer                   //Initiate Transfer
+PUT /api/v2/transfer/{ID}/              //Edit Transfer
+DELETE /api/v2/transfer/{ID}/           //Delete Transfer
+
+GET /api/v2/authorizeTransfer/{transferID}  //Authorize Transfer (Backend process)
+
+
+Vulnerabilities:
+GET  /api/v2/auth/history/{userID} - SQLi (No Error Msg)
+POST /api/v2/user/ - Parameter Stuffing (Account List)
+GET /api/v1/user/{UserID} - IDOR 
+ALL POST - xxe/ssrf (convert to json, block file:// handler)
+PUT /api/v2/Transfer/{ID}/ - IDOR (bases owner check on User Profile vs Account owner)
+GET /api/v2/authorizeTransfer/{transferID} - MFLAC (ACL localhost only)
+
+Persistant XSS - Transfer history
+CSRF Auth refresh
+Arbitrary Origin 

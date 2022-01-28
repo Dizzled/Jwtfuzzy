@@ -1,0 +1,14 @@
+{
+    "name": "chickenfinancial",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "concurrently \"npm start --prefix ./api\" \"npm start --prefix ./client\""
+    },
+    "dependencies": {
+        "concurrently": "6.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
