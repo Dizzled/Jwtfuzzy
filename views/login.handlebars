@@ -1,0 +1,41 @@
+
+ <title>Login</title>
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href="/stylesheets/main.min.css" rel="stylesheet">
+  <link href="/stylesheets/justified-nav.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+<h1>{{session}}</h1>
+
+  <div style="text-align: center;" class="wrapper">
+    <header>Login Form</header>
+    <form action="/login" method="POST">
+    <div class="field name">
+        <div class="input-area">
+          <input type="text" name="name" required="true">
+          <i class="icon fas fa-user"></i>
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" name="email" required="true">
+          <i class="icon fas fa-envelope"></i>
+         
+        </div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" name="password" required="true">
+          <i class="icon fas fa-lock"></i>
+        </div>
+         <i>{{error}}</i>
+      </div>
+      </div>
+      <input type="submit" value="login">
+    </form>
+  </div>
+ 
+  
+
+</body>
+</html>

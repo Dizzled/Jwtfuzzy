@@ -1,14 +1,26 @@
 {
-    "name": "chickenfinancial",
+    "name": "jwtfuzzy",
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "start": "concurrently \"npm start --prefix ./api\" \"npm start --prefix ./client\""
-    },
-    "dependencies": {
-        "concurrently": "6.2.0"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.15"
+        "start": "node ./bin/www",
+        "startDev": "nodemon --delay 3.2 npm start"
+      },
+      "dependencies": {
+        "cookie-parser": "~1.4.3",
+        "debug": "~2.6.9",
+        "express": "~4.16.0",
+        "express-fileupload": "^1.2.1",
+        "express-flash": "github:RGBboy/express-flash",
+        "express-handlebars": "^3.0.0",
+        "express-session": "^1.17.2",
+        "express-session-sqlite": "^2.0.10",
+        "http-errors": "~1.6.2",
+        "jade": "^0.31.2",
+        "md5": "^2.3.0",
+        "morgan": "~1.9.0",
+        "pg": "^7.12.0",
+        "sqlite3": "^4.2.0"
+      }
     }
-}
+    
