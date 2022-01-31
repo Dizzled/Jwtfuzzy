@@ -7,10 +7,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const exphbs = require('express-handlebars');
-const handlebars = require('./handlebars')(exphbs);
+const handlebars = require('./handlebars')
 const db = require('./database');
 var index = require('../routes');
-
 var app = express();
 
 // view engine setup
@@ -50,7 +49,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('public/images')); 
+app.use(express.static("../public/images")); 
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 app.use('/', index);
 
