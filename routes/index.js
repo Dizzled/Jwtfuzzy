@@ -47,7 +47,6 @@ router.post("/register", function (req, res, next) {
 
         res.render('register', {
           success: "Thank you for signing up!"
-          
         })
       });
 
