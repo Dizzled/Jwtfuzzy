@@ -1,0 +1,52 @@
+
+ <title>None Challenge</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css" 
+</head>
+<body>
+<h3>{{confirmation}}</h3>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Home</a></li>
+        <li><a href="/help">Help</a></li>
+        <li><a href="/challenges">Challenges</a></li>
+		    <li><a href="/register">Register</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<img src="jwt_logo.png" alt="jwt" class="row justify-content-md-center"/>
+  <div class="container">
+    <h1>JWT None Algorithm Challenge</h1>
+    <div class="row justify-content-md-center" style="padding-top: 5%;">
+    <div class="col-md-6 content">
+    <h4>Please Login:</h4>
+    <form action="/none" method="POST" class="form-group">
+    <div class="field name">
+        <div class="input-area">
+          <input type="text" name="name" required="false" placeholder="name" class="form-control" ><br>
+          <i class="icon fas fa-user"></i>
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" name="email" required="true" placeholder="email" class="form-control" ><br>
+          <i class="icon fas fa-envelope"></i>
+        </div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" name="password" required="true" placeholder="password"class="form-control" ><br>
+          <i class="icon fas fa-lock"></i>
+        </div>
+         <i>{{error}}</i>
+        </div>
+       <div><input type="submit" value="Submit" class="btn btn-dark" style="font-size: 18px;"></div>
+    </form>
+  </div>
+ 
+  
+
+</body>
+</html>

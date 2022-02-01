@@ -60,5 +60,42 @@ router.post("/register", function (req, res, next) {
 
 });
 
+/* GET Login page. */
+router.get('/none', function (req, res, next) {
+  res.render('none')
+});
+
+/* Submit Login */
+router.post('/none', function (req, res, next) {
+
+  let email = req.body.email;
+  let pass = md5(req.body.password);
+
+  var query = "SELECT * FROM user where email = '" + email + "' and password = '" + pass + "'";
+
+  db.get(query, function (err, row) {
+    if (err) {
+      res.render('none', {
+        error: err + " " + row
+      })
+      return;
+    }else{
+    try {
+      if (row.password === pass) {
+
+          res.render('none',{
+            confirmation: "Sucessfully Signed in " + req.body.name
+          });
+      }
+    } catch (error) {
+      res.render('none', {
+        error: 'Invalid password'
+      })
+    }
+    }
+  })
+
+})
+
 
 module.exports = router;

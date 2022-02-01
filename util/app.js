@@ -10,10 +10,12 @@ const exphbs = require('express-handlebars');
 const handlebars = require('./handlebars')(exphbs);
 const db = require('./database');
 var index = require('../routes');
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
+
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -47,7 +49,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/static', express.static('../public/images'))
+app.use(express.static('public/images'))
+app.use(express.static('public/stylesheets'))
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 app.use('/', index);
 

@@ -21,23 +21,31 @@
     </nav>
   </div>
 </header>
-<img src="jwt_logo.png" alt="jwt" class="logo" style="size: 50%;"/>
+<img src="jwt_logo.png" alt="jwt" class="logo"/>
         <div> <div class="container">
   <div class="row justify-content-md-center" style="padding-top: 5%;">
     <div class="col-md-6 content">
             <h1>Registration</h1>
                 <form class="form-register" action="/register" method="post">
-                    <h2 class="form-signin-heading">Register New User</h2>
+                    <h4 class="form-signin-heading">Register New User</h4>
                     <h3>{{success}}
                     {{error}}</h3>
 
-                    <label for="name">Name:</label><br>
-                    <input type="text" id="name" name="name"><br>
-                    <label for="email">Email:</label><br>
-                    <input type="text" id="email" name="email">
-                    <div><label for="password">password:</label></div>
-                    <input type="text" id="password" name="password">
-                    <div><input type="submit" value="Submit"></div>
+                   <div class="field name">
+        <div class="input-area">
+          <input type="text" name="name" required="false" placeholder="name" class="form-control" ><br>
+          <i class="icon fas fa-user"></i>
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" name="email" required="true" placeholder="email" class="form-control" ><br>
+          <i class="icon fas fa-envelope"></i>
+        </div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" name="password" required="true" placeholder="password"class="form-control" ><br>
+          <i class="icon fas fa-lock"></i>
+          <div><input type="submit" value="Submit" class="btn btn-dark" style="font-size: 18px;"></div>
                 </form>
             </div>
         </div>
