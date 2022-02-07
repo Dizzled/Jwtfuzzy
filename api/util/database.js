@@ -14,11 +14,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             name text, 
             email text UNIQUE, 
             password text,
-            session text,
-            img_name text,
-            img text,
             CONSTRAINT email_unique UNIQUE (email),
-            CONSTRAINT session_unique UNIQUE (session)
             )`,
             (err) => {
                 if (err) {
@@ -34,7 +30,6 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             });
     }
 });
-
 
 
 module.exports = db

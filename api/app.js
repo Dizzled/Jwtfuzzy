@@ -7,10 +7,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const exphbs = require('express-handlebars');
-const handlebars = require('./handlebars')(exphbs);
-const db = require('./database');
+const handlebars = require('./util/handlebars')(exphbs);
+require("dotenv").config();
 var index = require('../routes');
-
 var app = express();
 
 // view engine setup

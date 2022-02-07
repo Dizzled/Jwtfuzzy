@@ -1,7 +1,8 @@
-const authVerify = require('../util/authVerify');
+const jwt = require('../api/util/authVerify');
 var express = require('express');
 var router = express.Router();
-const db = require('../util/database');
+const db = require('../api/util/database');
+const session = require('express-session');
 var md5 = require('md5');
 
 
@@ -12,8 +13,15 @@ router.get(["/","/index"], function(req, res, next) {
 
 /* GET challenges page. */
 router.get("/challenges", function(req, res, next) {
-  res.render('challenges');
-});
+
+  if(jwt.authenticateToken(req)){
+    res.render('challenges', {
+      welcome: "Welcome " + req.session.name 
+    });
+  }else{
+      res.json({ "error" : "User needs to be logged in to access challenges." });
+    }
+  });
 
 /* GET register page. */
 router.get("/register", function (req, res, next) {
@@ -23,23 +31,21 @@ router.get("/register", function (req, res, next) {
 /* Register New User */
 router.post("/register", function (req, res, next) {
 
-  if (req.body.email > 0 && req.body.username > 0 && req.body.password > 0) {
+  const { username, email, password } = req.body;
 
-    res.render('register', {
-      message: err.message
-    });
-    return;
+  if (!(username && password && email)) {
+    res.status(400).send("All input is required");
   }
 
   var sql = "select * from user where email = ?";
-  var email = req.body.email;
+
+  
   db.get(sql, email, (err, row) => {
     if (!row) {
 
       var insert = 'INSERT INTO user (name, email, password) VALUES(?,?,?)';
-      console.log(insert);
 
-      db.run(insert, [req.body.username, req.body.email, md5(req.body.password)], function (err) {
+      db.run(insert, [username, email, md5(password)], function (err) {
         if (err) {
           return console.error(err.message);
         }
@@ -57,45 +63,51 @@ router.post("/register", function (req, res, next) {
       })
     }
   })
-
 });
 
 /* GET Login page. */
-router.get('/none', function (req, res, next) {
-  res.render('none')
+router.get('/login', function (req, res, next) {
+  res.render('login')
 });
 
 /* Submit Login */
-router.post('/none', function (req, res, next) {
-
-  let email = req.body.email;
-  let pass = md5(req.body.password);
-
-  var query = "SELECT * FROM user where email = '" + email + "' and password = '" + pass + "'";
+router.post('/login', function (req, res, next) {
+  
+  const { username, email, password } = req.body;
+  
+  var query = "SELECT * FROM user where email = '" + email + "'";
 
   db.get(query, function (err, row) {
     if (err) {
-      res.render('none', {
+      res.render('login', {
         error: err + " " + row
       })
       return;
     }else{
     try {
-      if (row.password === pass) {
-
-          res.render('none',{
-            confirmation: "Sucessfully Signed in " + req.body.name
+      if (row.password === md5(password)) {
+          //Create JWT session token
+          const token = jwt.generateAccessToken({id: row.id, name: req.body.email})
+          req.session.userID = row.id;
+          res.cookie('session_token',token) 
+          res.render('challenges',{
+            welcome: "Sucessfully Signed in as " + row.name,    
           });
       }
     } catch (error) {
-      res.render('none', {
-        error: 'Invalid password'
+      res.render('login', {
+        error: error
       })
     }
     }
   })
-
 })
+
+/* GET none page. */
+router.get('/none', function (req, res, next) {
+  res.render('none')
+});
+
 
 
 module.exports = router;
