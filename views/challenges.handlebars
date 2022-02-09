@@ -3,10 +3,9 @@
   <head>
     <title>TokenLab : JWTLabs</title>
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="JkCnKmSMYpocKVZOHNazkRzAl068bw0e2K6dUQqRT5MxFzxDzCeQM00rFx9cxfZ2lHA4tnT4bg8WtUbz+872NA==" />
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css"   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">   
   </head>
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
@@ -21,19 +20,24 @@
     </nav>
   </div>
 </header>
-<h3 class="row justify-content-md-center">{{welcome}}</h3>
- <img src="jwt_logo.png" alt="jwt" class="row justify-content-md-center" />
+
+<div class='nav-brand'> 
+ <img src="jwt_logo.png" alt="jwt" width='300px' height='150px'/>
+ </div>
+ <h3 class="row justify-content-md-center">{{welcome}}</h3>
     <div class="container">
   <div class="row justify-content-md-center" style="padding-top: 5%;">
     <div class="col-md-6 content">
-<h3 class="row justify-content-md-center">Available Labs</h3>
+<div class="container">
+<h3>Available Labs</h3>
 <ol>
-  <li><a href="none" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">None Algorithm [Very Easy]</a>
-  <li><a href="exposed" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Exposed Key [Easy]</a>
-  <li><a href="signature" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Signature Not Checked [Very Easy]</a>
-  <li><a href="weaksig" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Weak Signature [Medium]</a>
-  <li><a href="vulnerablekid" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Vulnerable Kid [Medium Hard]</a>
+  <li><a href="none" class="btn btn-secondary" role="button">None Algorithm [Very Easy]</a>
+  <li><a href="exposed" class="btn btn-secondary" role="button" aria-pressed="true">Exposed Key [Easy]</a>
+  <li><a href="signature" class="btn btn-secondary" role="button" aria-pressed="true">Signature Not Checked [Very Easy]</a>
+  <li><a href="weaksig" class="btn btn-secondary" role="button" aria-pressed="true">Weak Signature [Medium]</a>
+  <li><a href="vulnerablekid" class="btn btn-secondary" role="button" aria-pressed="true">Vulnerable Kid [Medium Hard]</a>
 </ol>
+</div>
   </body>
 
 </html>

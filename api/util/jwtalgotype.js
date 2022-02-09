@@ -1,21 +1,24 @@
 const jwt = require("jsonwebtoken");
 
-const config = process.env;
-
-const verifyToken = (req, res, next) => {
-  const token =
-    req.body.token || req.query.token || req.headers["x-access-token"];
-
-  if (!token) {
-    return res.status(403).send("A token is required for authentication");
+function nulltoken(req) {
+    var cookieJar = {};
+    var cookies = req.headers.cookie.split(';');
+  
+    for (cookie of cookies) {
+      let pair = cookie.split('=');
+      cookieJar[pair[0].trim()] = pair[1].trim()
+    }
+    
+    if ('session_token' in cookieJar) {
+      var session_token = cookieJar['session_token'];
+    }else{
+      return null;
+    }
+  
+    const token = session_token;
+    const decoded = jwt.verify(token);
+    var userID = decoded.id;
+    return userID;
   }
-  try {
-    const decoded = jwt.verify(token, config.TOKEN_KEY);
-    req.user = decoded;
-  } catch (err) {
-    return res.status(401).send("Invalid Token");
-  }
-  return next();
-};
 
-module.exports = verifyToken;
+module.exports = nulltoken;

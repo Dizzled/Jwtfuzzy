@@ -1,27 +1,35 @@
 {
-    "name": "jwtfuzzy",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "start": "node ./bin/www",
-        "startDev": "nodemon --delay 3.2 npm start"
-    },
-    "dependencies": {
-        "cookie-parser": "~1.4.3",
-        "debug": "~2.6.9",
-        "dotenv": "^15.0.0",
-        "express": "~4.16.0",
-        "express-fileupload": "^1.2.1",
-        "express-flash": "github:RGBboy/express-flash",
-        "express-handlebars": "^3.0.0",
-        "express-session": "^1.17.2",
-        "express-session-sqlite": "^2.0.10",
-        "http-errors": "~1.6.2",
-        "jade": "^0.31.2",
-        "jsonwebtoken": "^8.5.1",
-        "md5": "^2.3.0",
-        "morgan": "~1.9.0",
-        "pg": "^7.12.0",
-        "sqlite3": "^4.2.0"
-    }
+  "name": "jwtfuzzy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "routes/index.js",
+  "scripts": {
+    "start": "nodemon --inspect=0.0.0.0 bin/www",
+    "build": "docker build . -t jwt_token_lab",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dizzled/Jwtfuzzy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dizzled/Jwtfuzzy/issues"
+  },
+  "homepage": "https://github.com/Dizzled/Jwtfuzzy#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
+    "express-session-sqlite": "^2.0.10",
+    "jsonwebtoken": "^7.1.9",
+    "md5": "^2.3.0",
+    "morgan": "^1.10.0",
+    "node-modules": "^1.0.1",
+    "nodemon": "^2.0.15",
+    "sqlite3": "^5.0.2"
+  }
 }

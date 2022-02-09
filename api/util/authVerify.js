@@ -60,6 +60,8 @@ function getUserID(req) {
   
   if ('session_token' in cookieJar) {
     var session_token = cookieJar['session_token'];
+  }else{
+    return null;
   }
 
   const token = session_token;

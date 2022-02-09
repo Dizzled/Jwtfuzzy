@@ -4,7 +4,15 @@ var router = express.Router();
 const db = require('../api/util/database');
 const session = require('express-session');
 var md5 = require('md5');
+const exphbs = require('express-handlebars');
+const nulltoken = require('../api/util/jwtalgotype');
+var hbs = exphbs.create({})
 
+
+hbs.handlebars.registerHelper("increasePrice", function(price) {
+  price += 10;
+  return price;
+});
 
 /* GET home page. */
 router.get(["/","/index"], function(req, res, next) {
@@ -13,14 +21,7 @@ router.get(["/","/index"], function(req, res, next) {
 
 /* GET challenges page. */
 router.get("/challenges", function(req, res, next) {
-
-  if(jwt.authenticateToken(req)){
-    res.render('challenges', {
-      welcome: "Welcome " + req.session.name 
-    });
-  }else{
-      res.json({ "error" : "User needs to be logged in to access challenges." });
-    }
+    res.render('challenges');
   });
 
 /* GET register page. */
@@ -65,13 +66,13 @@ router.post("/register", function (req, res, next) {
   })
 });
 
-/* GET Login page. */
-router.get('/login', function (req, res, next) {
-  res.render('login')
+/* GET none page. */
+router.get('/none', function (req, res, next) {
+  res.render('none')
 });
 
 /* Submit Login */
-router.post('/login', function (req, res, next) {
+router.post('/none', function (req, res, next) {
   
   const { username, email, password } = req.body;
   
@@ -79,7 +80,7 @@ router.post('/login', function (req, res, next) {
 
   db.get(query, function (err, row) {
     if (err) {
-      res.render('login', {
+      res.render('none', {
         error: err + " " + row
       })
       return;
@@ -90,12 +91,12 @@ router.post('/login', function (req, res, next) {
           const token = jwt.generateAccessToken({id: row.id, name: req.body.email})
           req.session.userID = row.id;
           res.cookie('session_token',token) 
-          res.render('challenges',{
+          res.render('none',{
             welcome: "Sucessfully Signed in as " + row.name,    
           });
       }
     } catch (error) {
-      res.render('login', {
+      res.render('none', {
         error: error
       })
     }
@@ -104,8 +105,19 @@ router.post('/login', function (req, res, next) {
 })
 
 /* GET none page. */
-router.get('/none', function (req, res, next) {
-  res.render('none')
+router.get('/admin', function (req, res, next) {
+
+  let id = nulltoken(req)
+  
+  if(id === 1){
+    res.render('admin',{
+      message : "Welcome Admin"
+    });
+  }else{
+      res.render('none', {
+        message : "Only Available to Admin"
+      }); 
+  }
 });
 
 
