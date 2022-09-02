@@ -6,7 +6,7 @@
             "name": "Docker: Attach to Node",
             "type": "node",
             "request": "attach",
-            "port": 9229,
+            "port": 8888,
             "address": "localhost",
             "localRoot": "${workspaceFolder}\\routes\\index.js",
             "remoteRoot": "/mnt/c/Users/dlagrone/Vscode/Jwtfuzzy",

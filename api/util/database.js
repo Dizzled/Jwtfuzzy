@@ -14,21 +14,23 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
             name text, 
             email text UNIQUE, 
             password text,
-            CONSTRAINT email_unique UNIQUE (email),
+            CONSTRAINT email_unique UNIQUE (email)
             )`,
             (err) => {
                 if (err) {
                     // Table already created
+                    console.log(err)
                 } else {
                     // Table just created, creating some rows
-                    var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
-                    db.run(insert, ["admin", "admin@gmail.com", md5('123456')])
-                    db.run(insert, ["user", "user@gmail.com", md5("123456")])
-                    db.run(insert, ["test", "test@gmail", md5("pass")])
+                    var insert = `INSERT INTO user (name, email, password) VALUES (?,?,?)`;
+                    db.run(insert, ["admin", "admin@gmail.com", md5('123456')]);
+                    db.run(insert, ["user", "user@gmail.com", md5("123456")]);
+                    db.run(insert, ["test", "test@gmail", md5("pass")]);
                     
                 }
             });
-    }
+
+        }
 });
 
 

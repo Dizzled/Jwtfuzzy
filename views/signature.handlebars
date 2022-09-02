@@ -1,11 +1,13 @@
-
- <title>None Challenge</title>
- <head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-</head>
- <body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Signature Not Checked</title>
+    <meta name="csrf-param" content="authenticity_token" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">   
+  </head>
+  <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav>
@@ -15,29 +17,26 @@
         <li><a href="/challenges">Challenges</a></li>
         <li><a href="/register">Register</a></li>
         <li><a href="/admin">Admin Panel</a></li>
-        {{message}}
       </ul>
     </nav>
   </div>
 </header>
-    <div class='nav-brand'> 
- <img src="jwt_logo.png"  width='300px' height='150px' style="margin: 2%;"/>
+
+<div class='nav-brand'> 
+ <img src="jwt_logo.png" alt="jwt" width='300px' height='150px' style="margin: 2%;"/>
  </div>
-    <h1>Lab - The algorithm none</h1>
+ <h1>Lab - Signature Not Checked</h1>
 <div class="col-md-5">
 
     <h3 class="row justify-content-md-center">{{welcome}}</h3>
 
     <div class="container">
         <h5 class="row justify-content-md-center">Goal: Gain access to the admin user via the JWT token.</h5>
-	<p class="row justify-content-md-center">
-	The code may allow the "None" algorithm. Surprising!
-	</p>
 </div>
     <div class="row justify-content-md-center" style="padding-top: 5%;">
     <div class="col-md-6 content">
     <h4>{{message}}</h4>
-    <form action="/none" method="POST" class="login-form">
+    <form action="/signature" method="POST" class="login-form">
     <input type="hidden" name="authenticity_token" value="FDtubqQq4owuVlmnmTwEC9UuWlDqh03E3E9m1l5gXR7ODwbrzJPtpByxpA6ZzBqPVJeTyto7FchmyYZaxdNf8A==" />
       <div class="field email">
         <div class="input-area">
@@ -55,6 +54,8 @@
         <input type="submit" value="Sign In" class="btn btn-dark" style="font-size: 18px;">
        </div>
     </form>
-  </div>
+<div class="container">
+</div>
   </body>
+
 </html>

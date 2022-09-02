@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var session = require('express-session');
+var { expressjwt: jwt } = require("express-jwt");
 var sqlite = require('sqlite3');
 var sqliteStoreFactory = require('express-session-sqlite').default;
 var path = require('path');
@@ -11,7 +12,8 @@ const handlebars = require('./util/handlebars')(exphbs);
 require("dotenv").config();
 var index = require('../routes');
 var app = express();
-
+var fs = require('fs');
+const TOKEN_SECRET= fs.readFileSync(path.join(__dirname, '/util/pub.pem'));
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 
@@ -70,5 +72,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
+// app.use('/protected', jwt({
+//   secret: process.env.TOKEN_SECRET = TOKEN_SECRET,
+//   requestProperty: 'accessToken',
+//   algorithms: ["HS256"],
+//   getToken: req => {
+//   return req.cookies['access_token'];
+//   }
+//   }));
+  
 module.exports = app;
